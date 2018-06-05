@@ -1,6 +1,6 @@
 ## 概述
 
-**原流程：**内容组与产品组都为 Master 的成员，都可以对 Master 进行推送操作。
+**原流程**：内容组与产品组都为 Master 的成员，都可以对 Master 进行推送操作。
 
 ![](https://main.qcloudimg.com/raw/2a845f6c064a200e8721e5fc24957c73.png)
 
