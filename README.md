@@ -10,7 +10,7 @@
 
 ## 特点
 
-| 对比项 | 内容组 | 产品组 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+| 对比项 | 内容组 | 产品组 |
 | --- | --- | --- |
 | 克隆到本地 | 支持 | 支持 |
 | Fetch Master | 支持 | 支持 |
@@ -49,7 +49,7 @@ Fork 后，页面将跳转至产品组的 Master Fork 页面。
 
 ![](https://main.qcloudimg.com/raw/d5d77095f4beeade14928c4ad9154ac5.png)
 
-更新该文档后，在编辑页面下方输入comment，单击【Propose file change】，完成编辑，进入【Pull Request】页面。
+更新该文档后，在编辑页面下方输入 comment，单击【Propose file change】，完成编辑，进入【Pull Request】页面。
 
 ![](https://main.qcloudimg.com/raw/ce242535e05d8ba8a7c70cada6afaf5c.png)
 
@@ -59,7 +59,7 @@ Fork 后，页面将跳转至产品组的 Master Fork 页面。
 
 ![](https://main.qcloudimg.com/raw/4f134e9ebae87b7317f7f6a4f03f4d22.png)
 
-填写comment，单击【Create pull request】。
+填写 comment，单击【Create pull request】。
 
 ![](https://main.qcloudimg.com/raw/c1ec1851748bd04336277547e1cf2c2a.png)
 
@@ -73,7 +73,7 @@ Fork 后，页面将跳转至产品组的 Master Fork 页面。
 
 ### Fork 项目
 
-产品组不属于项目的成员，需要进入文档的Master页面，将项目标记为 Fork，获取一个副本。**Fork 只需要操作一次，之后的文档更新都不需要二次 Fork**。
+产品组不属于项目的成员，需要进入文档的 Master 页面，将项目标记为 Fork，获取一个副本。**Fork 只需要操作一次，之后的文档更新都不需要二次 Fork**。
 
 ![](https://main.qcloudimg.com/raw/88b29400a41fc2943e9f46114344302d.png)
 
@@ -151,7 +151,7 @@ Fork 后，产品组的版本将**不再自动与内容组的版本同步**，�
 
 冲突产生的根本原因是**同一文件的同一个位置被同时修改**。由于 Git 在每一个 Push 后会生成一个节点，因此此处的【同时】指同一个 Push 的时间节点。**在每次修改文件前进行【同步】操作可以减少冲突**。
 
-- **案例 **：产品组修改了文件，暂未【Pull Request】，但内容组修改了同一文件的同一位置，产品组此时【Pull Request】则提示有冲突。
+**案例 **：产品组修改了文件，暂未【Pull Request】，但内容组修改了同一文件的同一位置，产品组此时【Pull Request】则提示有冲突。
 
 ### 冲突处理
 
