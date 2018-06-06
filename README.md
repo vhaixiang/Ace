@@ -4,13 +4,13 @@
 
 ![](https://main.qcloudimg.com/raw/2a845f6c064a200e8721e5fc24957c73.png)
 
-**现流程**：内容组为 Master 的成员，产品组不属于 Master 的成员，产品组通过 Fork 操作，将拷贝了一份 Master 的副本，称为 Master Fork。产品组在修改文件之前需要手动进行同步操作，修改之后并 Push 在 Master Fork 后，需要发起【Pull Request】，由内容组审核。内容组审核通过后即可发布到 Master。
+**现流程**：内容组为 Master 的成员，产品组不属于 Master 的成员，产品组通过 Fork 操作，将拷贝了一份 Master 的副本，称为 Master Fork。产品组修改之后并 Push 在 Master Fork 后，需要发起【Pull Request】，由内容组审核。内容组审核通过后即可发布到 Master。
 
 ![](https://main.qcloudimg.com/raw/075be69601189b8ad10adff8b7687728.png)
 
 ## 特点
 
-| 对比项 | 内容组 | 产品组 |
+| 对比项 | 内容组 | 产品组 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 | --- | --- | --- |
 | 克隆到本地 | 支持 | 支持 |
 | Fetch Master | 支持 | 支持 |
@@ -20,13 +20,66 @@
 | 发送 Pull Request | 支持 | 支持 |
 | 处理冲突 | 支持 | 支持 |
 
-## 产品组操作
+## 产品组网页操作（推荐）
+
+网页操作简单快捷，适合于单篇文档的更新，但存在以下两方面的缺点：每次仅能更新一篇文档，不能批量更新；无法创建文件夹。如果有**批量更新**的需求或者**创建文件夹**的需求，则需要采用本地操作，**否则建议采用网页操作**。
 
 ### Fork 项目
 
-产品组不属于项目的成员，需要将项目标记为 Fork，获取一个副本。
+产品组不属于项目的成员，需要进入文档的 Master 页面，将项目标记为 Fork，获取一个副本。**Fork 只需要操作一次，之后的文档更新都不需要二次 Fork**。
 
 ![](https://main.qcloudimg.com/raw/88b29400a41fc2943e9f46114344302d.png)
+
+Fork 后，页面将跳转至产品组的 Master Fork 页面。
+
+![](https://main.qcloudimg.com/raw/dce7c94ea4c070986b681ad90cd69738.png)
+
+### 更新文档
+
+>注：本操作仅能单篇文档操作，若需要批量更新，请采用本地方式。
+
+进入文档的 Master 页面，单击对应的文档，单击编辑按钮进入编辑界面。
+
+![](https://main.qcloudimg.com/raw/93c4930a7c38c86b0f277d59ebdc0603.png)
+
+进入编辑界面后，系统提示【您没有这个项目的编辑权限，编辑的内容会保存到 Master Fork 中】。
+
+>**注意**：
+>如果没有该提示，您可能进入了 Master Fork 页面，请回到 Master 页面。
+
+![](https://main.qcloudimg.com/raw/d5d77095f4beeade14928c4ad9154ac5.png)
+
+更新该文档后，在编辑页面下方输入comment，单击【Propose file change】，完成编辑，进入【Pull Request】页面。
+
+![](https://main.qcloudimg.com/raw/ce242535e05d8ba8a7c70cada6afaf5c.png)
+
+### 发送 Pull Request
+
+单击【Create pull reuqest】。
+
+![](https://main.qcloudimg.com/raw/4f134e9ebae87b7317f7f6a4f03f4d22.png)
+
+填写comment，单击【Create pull request】。
+
+![](https://main.qcloudimg.com/raw/c1ec1851748bd04336277547e1cf2c2a.png)
+
+### 通知内容组更新
+
+产品组需要将上一步的【Pull Request 链接】发送组内容组相关成员进行审核。
+
+## 产品组本地操作（可选）
+
+网页操作简单快捷，适合于单篇文档的更新，但存在以下两方面的缺点：每次仅能更新一篇文档，不能批量更新；无法创建文件夹。如果有**批量更新**的需求或者**创建文件夹**的需求，则需要采用本地操作，**否则建议采用网页操作**。
+
+### Fork 项目
+
+产品组不属于项目的成员，需要进入文档的Master页面，将项目标记为 Fork，获取一个副本。**Fork 只需要操作一次，之后的文档更新都不需要二次 Fork**。
+
+![](https://main.qcloudimg.com/raw/88b29400a41fc2943e9f46114344302d.png)
+
+Fork 后，页面将跳转至产品组的 Master Fork 页面。
+
+![](https://main.qcloudimg.com/raw/dce7c94ea4c070986b681ad90cd69738.png)
 
 ### 下载项目
 
@@ -96,13 +149,13 @@ Fork 后，产品组的版本将**不再自动与内容组的版本同步**，�
 
 ### 冲突的产生
 
-冲突产生的根本原因是**同一文件的同一个位置被同时修改**。由于 Git 在每一个 Push 后会生成一个节点，因此此处的【同时】指同一个 Push 的时间节点。**在每次修改文件前进行【同步】操作可以减少冲突**。以下分析两种冲突产生的典型案例：
-- **案例 1**：产品组修改了文件，暂未【Pull Request】，但内容组修改了同一文件的同一位置，产品组此时【Pull Request】则提示有冲突。
-- **案例 2**：内容组修改了文件，已经 Push 到 Master，但产品组修改了同一文件的同一位置，产品组此时【Pull Request】则提示有冲突。
+冲突产生的根本原因是**同一文件的同一个位置被同时修改**。由于 Git 在每一个 Push 后会生成一个节点，因此此处的【同时】指同一个 Push 的时间节点。**在每次修改文件前进行【同步】操作可以减少冲突**。
+
+- **案例 **：产品组修改了文件，暂未【Pull Request】，但内容组修改了同一文件的同一位置，产品组此时【Pull Request】则提示有冲突。
 
 ### 冲突处理
 
-**案例 1**：
+**案例**：
 
 产品组将【Boy】修改为【Cat】并 commit，但未【Pull Request】。
 
@@ -115,22 +168,6 @@ Fork 后，产品组的版本将**不再自动与内容组的版本同步**，�
 产品组将修改【Pull Request】后，提示有冲突。
 
 ![](https://main.qcloudimg.com/raw/5c1b923f9b1679972a6fe48b26a2dad8.png)
-
-**案例 1 解决方案**：产品组处理冲突、内容组处理冲突，两种方式任选一种即可解决。
-
-**产品组处理冲突**：
-
-产品组在【Pull Request】时，能够第一时间发现冲突。此时产品组执行【同步项目】，即可查看冲突，根据实际情况重新编辑文件，解决冲突。
-
-> - 【<<<<<<< HEAD】与【=======】之间为本地版本。
-> - 【=======】与【upstream/master】之间为 Master 的版本。
-> - 具体以哪个为准，需要修改的双方相互确认。确认后，删除相应的行，commit 并 Push 即可。
-
-![](https://main.qcloudimg.com/raw/3ec10246087c4fc85cf4827c692c11af.png)
-
-重新【Pull Request】后，发现并无冲突。
-
-![](https://main.qcloudimg.com/raw/8f1617187d3a67b464853b52919e100b.png)
 
 **内容组处理冲突**：
 
@@ -154,10 +191,6 @@ Fork 后，产品组的版本将**不再自动与内容组的版本同步**，�
 
 ![](https://main.qcloudimg.com/raw/e94381b0e00f93d1247bec6be74b18d8.png)
 
-**案例 2**：
-
-案例 2 的冲突处理方案与案例 1 相同。
-
 ## 优缺点
 
 **优点**：
@@ -167,5 +200,5 @@ Fork 后，产品组的版本将**不再自动与内容组的版本同步**，�
 **缺点**：
 
 - 流程变长。
-- 产品组需要学习【Fork】、【同步】、【Pull Request】三个操作。
+- 产品组需要学习【Pull Request】操作。
 - 任何人都可以【Pull Request】，需要由内容组成员人工判断。
